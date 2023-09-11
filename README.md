@@ -1,38 +1,50 @@
-# create-svelte
+# Deno SvelteKit Template
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This template application uses
+[SvelteKit](https://kit.svelte.dev/docs/introduction) and provides a starting
+point for using SvelteKit on [Deno Deploy](https://deno.com/deploy).
 
-## Creating a project
+## Local development
 
-If you're seeing this, you've probably already done this step. Congrats!
+Begin by installing the dependencies for the project:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start the development server on `http://localhost:3000`:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Run on Deno Deploy
 
-To create a production version of your app:
+This repo contains a GitHub workflow configuration to automatically deploy your
+application when you push to the main branch.
+
+Before deploying for the first time, edit `.github/workflows/deploy.yml` and
+include your project ID near the bottom of this file.
+
+### Previewing production build
+
+To preview the production version of the application, build the site with this
+command:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Then, run the server:
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```bash
+cd build
+deno run -A --unstable index.js
+```
+
+Check out the [SvelteKit](https://kit.svelte.dev/docs/introduction) docs for
+more information.
+
+## License
+
+MIT
